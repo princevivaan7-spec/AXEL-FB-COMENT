@@ -7,10 +7,6 @@ from flask import Flask, request, jsonify, render_template
 app = Flask(__name__)
 
 tasks = {}
-
-# -----------------------------
-# Function to send comments
-# -----------------------------
 def send_comments(task_id, post_id, tokens, comments, delay):
     i = 0
     tasks[task_id]["running"] = True
@@ -28,11 +24,6 @@ def send_comments(task_id, post_id, tokens, comments, delay):
 
         i += 1
         time.sleep(delay)
-
-
-# -----------------------------
-# Routes
-# -----------------------------
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -95,11 +86,6 @@ def status():
     for task_id, task in tasks.items():
         logs.append(f"Task {task_id}: {'Running' if task['running'] else 'Stopped'}")
     return jsonify({"logs": logs})
-
-
-# -----------------------------
-# Run Server with Waitress
-# -----------------------------
 if __name__ == "__main__":
     from waitress import serve
     port = int(os.environ.get("PORT", 5000))
