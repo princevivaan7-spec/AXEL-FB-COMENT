@@ -90,3 +90,9 @@ def stop_task():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+    @app.route("/status")
+def status():
+    logs = []
+    for task_id, task in tasks.items():
+        logs.append(f"Task {task_id}: {'Running' if task['running'] else 'Stopped'}")
+    return jsonify({"logs": logs})
