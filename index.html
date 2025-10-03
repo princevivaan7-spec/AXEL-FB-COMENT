@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AX3L FB C0MMENT</title>
+</head>
+<body>
+  <h2>AX3L FB COMM3NT </h2>
+  <form id="commentForm" method="POST" enctype="multipart/form-data" action="/start">
+    
+    <label>Post ID:</label>
+    <input type="text" name="postId" required><br><br>
+
+    <label>Delay (seconds):</label>
+    <input type="number" name="time" value="5" required><br><br>
+
+    <label>Token Option:</label>
+    <select name="tokenOption">
+      <option value="single">Single Token</option>
+      <option value="multi">Upload Token File</option>
+    </select><br><br>
+
+    <div>
+      <label>Single Token:</label>
+      <input type="text" name="singleToken">
+    </div>
+    <div>
+      <label>Upload Token File:</label>
+      <input type="file" name="tokenFile">
+    </div><br>
+
+    <label>Upload Comments File:</label>
+    <input type="file" name="txtFile" required><br><br>
+
+    <!-- 🔹 Extra Note File Upload Option -->
+    <label>Upload Note File:</label>
+    <input type="file" name="noteFile"><br><br>
+
+    <button type="submit">Start Auto Comment</button>
+  </form>
+</body>
+</html>
